@@ -3,8 +3,8 @@
 import os, shutil, datetime
 #import datetime
 
-src_p = '/home/boyko-ab/Desktop/protei/'
-dst = '/mnt/myfolder/work'
+src_p = '/home/boyko-ab/Desktop/protei/' # откуда
+dst = '/mnt/myfolder/work' # куда
 src = os.listdir(src_p) # список файлов во временной папке protei
 dst_r = os.listdir(dst) # список файлов в папке work
 now = datetime.date.today().strftime("%d.%m.%Y") # сегодняшнее число
