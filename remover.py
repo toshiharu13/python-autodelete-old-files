@@ -2,8 +2,8 @@
 
 import os, shutil, datetime
 
-src_p = '/home/boyko-ab/Desktop/to_work/'# папка источник
-dst_f = '/mnt/myfolder/work' # папка приёмник
+src_p = r'/home/boyko-ab/Рабочий стол/to_work' # папка источник
+dst_f = '/home/boyko-ab/mnt/myfolder/work' # папка приёмник
 src = os.listdir(src_p) # список файлов во временной папке to_work
 dst_r = os.listdir(dst_f) # список файлов в папке work
 now = datetime.date.today().strftime("%d.%m.%Y") # сегодняшнее число
@@ -11,11 +11,11 @@ count = 0 # счетчик для удаленных файлов
 count_er = 0 # счетчик ошибок при удалении
 count_f = 0 #счетчик удаленных папок
 count_move = 0 # счетчик перенесенных из  паки "протей" в папку "ворк"
-print('сегодня',now)
+print(f'сегодня {now}')
 if src:
     print('Перенос файлов из папки to_work в папку work')
     for file in src:
-        shutil.move(os.path.join(src_p,file), os.path.join(dst_f,file))
+        shutil.move(os.path.join(src_p, file), os.path.join(dst_f, file))
         print(src_p+file)
         count_move += 1
 else:
@@ -24,7 +24,7 @@ for file in dst_r:
     curpath = os.path.join(dst_f, file) # полный путь к обрабатываему файлу
     file_mod = datetime.datetime.fromtimestamp(os.path.getmtime(curpath)) # дата поледней модификации в нормальном виде
     if datetime.datetime.now() - file_mod > datetime.timedelta(weeks=27):
-        print(file, file_mod, "DELETING!")
+        print(f'{file} {file_mod} DELETING!')
         try:
             os.remove(curpath)
             count += 1
@@ -38,7 +38,7 @@ for file in dst_r:
                 shutil.rmtree(curpath, ignore_errors=True, onerror=None)
                 print("DONE!")
                 count_f += 1
-            except OSError  as error:
+            except OSError as error:
                 print(error)
                 print("Folder can not be removed")
                 count_er += 1
