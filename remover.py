@@ -2,9 +2,9 @@
 
 import os, shutil, datetime
 
-src_p = r'/home/boyko-ab/Рабочий стол/to_work' # папка источник
-dst_f = '/home/boyko-ab/mnt/myfolder/work' # папка приёмник
-src = os.listdir(src_p) # список файлов во временной папке to_work
+src_p = r'/home/boyko-ab/Рабочий стол/to_work'  # папка источник
+dst_f = '/home/boyko-ab/mnt/myfolder/work'  # папка приёмник
+src = os.listdir(src_p)  # список файлов во временной папке to_work
 dst_r = os.listdir(dst_f) # список файлов в папке work
 now = datetime.date.today().strftime("%d.%m.%Y") # сегодняшнее число
 count = 0 # счетчик для удаленных файлов
